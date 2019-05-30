@@ -1,4 +1,4 @@
-package twentyone;
+package io.github.raugustijn.twentyone;
 
 public class Card {
 	private final int value;

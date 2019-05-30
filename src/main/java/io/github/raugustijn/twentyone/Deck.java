@@ -1,4 +1,4 @@
-package twentyone;
+package io.github.raugustijn.twentyone;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,12 +1,12 @@
-package ui;
+package io.github.raugustijn.twentyone.ui;
 
 import java.util.List;
 import java.util.Scanner;
 
-import twentyone.Hand;
-import twentyone.Player;
-import twentyone.TwentyOne;
-import twentyone.TwentyOne.PlayOption;
+import io.github.raugustijn.twentyone.Hand;
+import io.github.raugustijn.twentyone.Player;
+import io.github.raugustijn.twentyone.TwentyOne;
+import io.github.raugustijn.twentyone.TwentyOne.PlayOption;
 
 public class TwentyOneUi {
 	Scanner input;

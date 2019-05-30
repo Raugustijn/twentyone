@@ -1,10 +1,10 @@
-package twentyone;
+package io.github.raugustijn.twentyone;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import ui.TwentyOneUi;
+import io.github.raugustijn.twentyone.ui.TwentyOneUi;
 //TODO: Add javadoc annotation to methods
 public class TwentyOne {
 	private final TwentyOneUi ui;

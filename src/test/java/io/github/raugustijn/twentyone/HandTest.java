@@ -1,11 +1,12 @@
-package twentyone;
+package io.github.raugustijn.twentyone;
 
 import static org.junit.Assert.*;
 
+import org.junit.Assert;
 import org.junit.Test;
 
-import twentyone.Card.Suit;
-import twentyone.Card.Type;
+import io.github.raugustijn.twentyone.Card.Suit;
+import io.github.raugustijn.twentyone.Card.Type;
 
 public class HandTest {
 
@@ -99,8 +100,8 @@ public class HandTest {
 		testHand.addCard(new Card(10, Suit.HEARTS, Type.STANDARD));
 		Hand newHand = testHand.split();
 		assertEquals(testHand.numberCards(), 1);
-		assertEquals(testHand.get(0).getSuit(), Suit.DIAMONDS);
+		Assert.assertEquals(testHand.get(0).getSuit(), Suit.DIAMONDS);
 		assertEquals(newHand.numberCards(), 1);
-		assertEquals(newHand.get(0).getSuit(), Suit.HEARTS);
+		Assert.assertEquals(newHand.get(0).getSuit(), Suit.HEARTS);
 	}
 }
