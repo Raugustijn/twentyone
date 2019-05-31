@@ -11,6 +11,14 @@ import io.github.raugustijn.twentyone.Card.Type;
 public class HandTest {
 
 	@Test
+	public void testToStringWithTwoAces() {
+		Hand testHand = new Hand();
+		testHand.addCard(new Card(1, Suit.HEARTS, Type.ACE));
+		testHand.addCard(new Card(1, Suit.DIAMONDS, Type.ACE));
+		assertEquals("State: PLAYING\nCards:\n(HEARTS,ACE,1)\n(DIAMONDS,ACE,1)", testHand.toString());
+	}
+
+	@Test
 	public void testCardPointTotalWithAcesLow() {
 		Hand testHand = new Hand();
 		testHand.addCard(new Card(10, Suit.DIAMONDS, Type.STANDARD));

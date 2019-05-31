@@ -33,6 +33,6 @@ public class Card {
 	
 	@Override
 	public String toString() {
-		return "(" + suit.toString() + "," + type.toString() + "," + Integer.toString(value) + ")";
+		return "(" + suit.toString() + "," + type.toString() + "," + value + ")";
 	}
 }
