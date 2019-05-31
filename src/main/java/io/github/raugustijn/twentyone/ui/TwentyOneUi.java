@@ -65,16 +65,33 @@ public class TwentyOneUi {
 		System.out.println();
 	}
 
-	public int askPlayerAmount() {
-		while (true) {
-			System.out.println("Please enter the amount of players (number 1-3):");
-			int amountPlayers = input.nextInt();
-			if (amountPlayers > 3 || amountPlayers < 1) {
-				System.out.println("This game can only handle 1 to 3 players");
-				System.exit(0);
-			}
-			return amountPlayers;
+	private int getNumberBetween1And3(String line) throws IllegalArgumentException {
+		Scanner scanner = new Scanner(line);
+		if (!scanner.hasNextInt()) {
+			throw new NumberFormatException("Expected an int");
 		}
+		int result = scanner.nextInt();
+		if (result > 3 || result < 1) {
+			throw new IllegalArgumentException("Invalid range");
+		}
+		return result;
+	}
+
+	public int askPlayerAmount() {
+		int amountPlayers = 0;
+		System.out.println("Enter the amount of players (number 1-3):");
+		do {
+			try {
+				amountPlayers = getNumberBetween1And3(input.nextLine());
+			} catch (NumberFormatException e) {
+				System.out.println("You did not enter a number.");
+				System.out.println("Please enter a number between 1 and 3:");
+			} catch (IllegalArgumentException e) {
+				System.out.println("This game can only handle 1 to 3 players.");
+				System.out.println("Please enter a number between 1 and 3:");
+			}
+		} while (amountPlayers == 0);
+		return amountPlayers;
 	}
 
 	public void notifyWinningPlayers(List<Player> standingPlayers) {
