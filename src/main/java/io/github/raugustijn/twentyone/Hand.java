@@ -75,9 +75,9 @@ public class Hand {
 	@Override
 	public String toString() {
 		StringBuilder result = new StringBuilder();
-		result.append("State: " + state.toString() + "\nCards:");
+		result.append("State: ").append(state.toString()).append("\nCards:");
 		for(Card card : ownCards) {
-			result.append("\n" + card.toString());
+			result.append("\n").append(card.toString());
 		}
 		return result.toString();
 	}
