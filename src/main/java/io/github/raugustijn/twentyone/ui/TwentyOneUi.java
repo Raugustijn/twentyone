@@ -26,7 +26,7 @@ public class TwentyOneUi {
 				System.out.println("Playing hand:");
 				System.out.println(hand.toString());
 			}
-			String playerOption = "";
+			String playerOption;
 				do {
 				playerOption = input.nextLine();
 				} while (playerOption.equals(""));
@@ -47,7 +47,7 @@ public class TwentyOneUi {
 	public void notifyPlayerHandBusted(Hand hand, Player player) {
 		System.out.println("Player " + player.getName() + ": Hand is busted");
 		System.out.println(hand.toString());
-		System.out.println("");
+		System.out.println();
 	}
 
 	public void notifySplitHand(Hand hand, Hand newHand, Player player) {
@@ -56,13 +56,13 @@ public class TwentyOneUi {
 		System.out.println(hand.toString());
 		System.out.println("Hand 2:");
 		System.out.println(newHand.toString());
-		System.out.println("");
+		System.out.println();
 	}
 
 	public void notifyPlayerNewHand(Hand hand, Player player) {
 		System.out.println("Player " + player.getName() + ": Updated hand");
 		System.out.println(hand.toString());
-		System.out.println("");
+		System.out.println();
 	}
 
 	public int askPlayerAmount() {
@@ -100,7 +100,7 @@ public class TwentyOneUi {
 		System.out.println("Bank:");
 		System.out.println(bank.getHand(0).toString());
 		System.out.println("Point total:" + (bank.getHand(0).cardPointTotal()));
-		System.out.println("");
+		System.out.println();
 		for (Player player: players) {
 			System.out.println("Player " + player.getName() + ":");
 			for (int i = 0; i < player.getNumberHand(); i++) {
@@ -108,7 +108,7 @@ public class TwentyOneUi {
 				System.out.println("Hand " + (i + 1));
 				System.out.println(hand.toString());
 				System.out.println("Total amount of points:" + (hand.cardPointTotal()));
-				System.out.println("");
+				System.out.println();
 			}
 		}
 		System.out.println("-------");
