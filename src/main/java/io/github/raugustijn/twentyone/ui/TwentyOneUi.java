@@ -28,7 +28,7 @@ public class TwentyOneUi {
 			}
 			String playerOption;
 				do {
-				playerOption = input.nextLine();
+					playerOption = input.nextLine();
 				} while (playerOption.equals(""));
 				switch (playerOption) {
 				case "s":
@@ -68,18 +68,17 @@ public class TwentyOneUi {
 	public int askPlayerAmount() {
 		while (true) {
 			System.out.println("Please enter the amount of players (number 1-3):");
-				int amountPlayers = input.nextInt();
-				if(amountPlayers > 3 || amountPlayers < 1){
-					System.out.println("This game can only handle between 1 and 3 players");
-					System.exit(0);
-				}
-				return amountPlayers;
-			
+			int amountPlayers = input.nextInt();
+			if (amountPlayers > 3 || amountPlayers < 1) {
+				System.out.println("This game can only handle 1 to 3 players");
+				System.exit(0);
+			}
+			return amountPlayers;
 		}
 	}
 
-	public void notifyWinnerPlayers(List<Player> standingPlayers) {
-		System.out.println("The following player(s) win:");
+	public void notifyWinningPlayers(List<Player> standingPlayers) {
+		System.out.println("The following player(s) win(s):");
 		for (Player player: standingPlayers) {
 			System.out.println("Player: " + player.getName());
 		}

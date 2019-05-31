@@ -29,7 +29,7 @@ public class TwentyOne {
 		}
 		ArrayList<Player> standingPlayers = roundBank(players, bank, deck);
 		ui.finalGameTable(players, bank);
-		ui.notifyWinnerPlayers(determineWinners(standingPlayers, bank));
+		ui.notifyWinningPlayers(determineWinners(standingPlayers, bank));
 	}
 	
 	/**
