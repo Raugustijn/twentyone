@@ -47,7 +47,7 @@ public class TwentyOne {
 		if (Hand.State.BUSTED.equals(bank.getHand(0).getState())) {
 			return standingPlayers;
 		}
-		ArrayList<Player> winners = new ArrayList<Player>();
+		ArrayList<Player> winners = new ArrayList<>();
 		for (Player player : standingPlayers) {
 			for (int i = 0; i < player.getNumberHand(); i++) {
 				Hand hand = player.getHand(i);
@@ -75,7 +75,7 @@ public class TwentyOne {
 	}
 	
 	protected ArrayList<Player> standingPlayers(Player[] players) {
-		ArrayList<Player> standingPlayers = new ArrayList<Player>();
+		ArrayList<Player> standingPlayers = new ArrayList<>();
 		for (Player player : players) {
 			boolean standing = false;
 			for (int i = 0; i < player.getNumberHand(); i++) {

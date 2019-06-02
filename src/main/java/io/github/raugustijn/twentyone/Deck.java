@@ -7,7 +7,7 @@ public class Deck {
 	private final ArrayList<Card> deckCards;
 
 	public Deck() {
-		ArrayList<Card> deckCards = new ArrayList<Card>();
+		ArrayList<Card> deckCards = new ArrayList<>();
 		for (Card.Suit suit : Card.Suit.values()) {
 			for (int i = 2; i <= 10; i++) {
 				deckCards.add(new Card(i, suit, Card.Type.STANDARD));

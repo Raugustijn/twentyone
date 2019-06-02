@@ -7,7 +7,7 @@ public class Player {
 	private final ArrayList<Hand> hands;
 	
 	public Player(String name) {
-		hands = new ArrayList<Hand>();
+		hands = new ArrayList<>();
 		hands.add(new Hand());
 		this.name = name;
 	}

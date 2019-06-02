@@ -11,7 +11,7 @@ public class Hand {
 	}
 	
 	public Hand() {
-		ownCards = new ArrayList<Card>();
+		ownCards = new ArrayList<>();
 		state = State.PLAYING;
 	}
 	
