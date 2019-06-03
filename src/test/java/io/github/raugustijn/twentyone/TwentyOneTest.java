@@ -9,7 +9,6 @@ import java.util.List;
 import org.junit.Test;
 
 public class TwentyOneTest {
-	//TODO: in all assertEquals the arguments are in the wrong order, flip them
 
 	@Test
 	public void testExecutePlayOptionHit() {
@@ -17,8 +16,8 @@ public class TwentyOneTest {
 		Deck testDeck = new Deck();
 		Player testPlayer = new Player("test");
 		game.executePlayOption(testPlayer.getHand(0), testPlayer, TwentyOne.PlayOption.HIT, testDeck);
-		assertEquals(testPlayer.getHand(0).numberCards(), 1);
-		assertEquals(testPlayer.getHand(0).getState(), Hand.State.PLAYING);
+		assertEquals(1, testPlayer.getHand(0).numberCards());
+		assertEquals(Hand.State.PLAYING, testPlayer.getHand(0).getState());
 	}
 	
 	@Test
@@ -30,8 +29,8 @@ public class TwentyOneTest {
 		testPlayer.getHand(0).addCard(new Card(10, Card.Suit.CLUBS, Card.Type.STANDARD));
 		testPlayer.getHand(0).addCard(new Card(10, Card.Suit.HEARTS, Card.Type.STANDARD));
 		game.executePlayOption(testPlayer.getHand(0), testPlayer, TwentyOne.PlayOption.HIT, testDeck);
-		assertEquals(testPlayer.getHand(0).numberCards(), 4);
-		assertEquals(testPlayer.getHand(0).getState(), Hand.State.BUSTED);
+		assertEquals(4, testPlayer.getHand(0).numberCards());
+		assertEquals(Hand.State.BUSTED, testPlayer.getHand(0).getState());
 	}
 	
 	@Test(expected=IllegalStateException.class)
@@ -52,11 +51,11 @@ public class TwentyOneTest {
 		testPlayer.getHand(0).addCard(new Card(10, Card.Suit.DIAMONDS, Card.Type.STANDARD));
 		testPlayer.getHand(0).addCard(new Card(10, Card.Suit.CLUBS, Card.Type.STANDARD));
 		game.executePlayOption(testPlayer.getHand(0), testPlayer, TwentyOne.PlayOption.SPLIT, testDeck);
-		assertEquals(testPlayer.getNumberHand(), 2);
-		assertEquals(testPlayer.getHand(0).numberCards(), 1);
-		assertEquals(testPlayer.getHand(1).numberCards(), 1);
-		assertEquals(testPlayer.getHand(0).getState(), Hand.State.PLAYING);
-		assertEquals(testPlayer.getHand(1).getState(), Hand.State.PLAYING);
+		assertEquals(2, testPlayer.getNumberHand());
+		assertEquals(1, testPlayer.getHand(0).numberCards());
+		assertEquals(1, testPlayer.getHand(1).numberCards());
+		assertEquals(Hand.State.PLAYING, testPlayer.getHand(0).getState());
+		assertEquals(Hand.State.PLAYING, testPlayer.getHand(1).getState());
 	}
 	
 	@Test
@@ -65,8 +64,8 @@ public class TwentyOneTest {
 		Deck testDeck = new Deck();
 		Player testPlayer = new Player("test");
 		game.executePlayOption(testPlayer.getHand(0), testPlayer, TwentyOne.PlayOption.STAND, testDeck);
-		assertEquals(testPlayer.getHand(0).numberCards(), 0);
-		assertEquals(testPlayer.getHand(0).getState(), Hand.State.STANDING);
+		assertEquals(0, testPlayer.getHand(0).numberCards());
+		assertEquals(Hand.State.STANDING, testPlayer.getHand(0).getState());
 	}
 	
 	@Test
@@ -92,7 +91,7 @@ public class TwentyOneTest {
 		bankPlayer.getHand(0).addCard(new Card(10, Card.Suit.DIAMONDS, Card.Type.STANDARD));
 		Player[] players = {testPlayer};
 		game.roundBank(players, bankPlayer, testDeck);
-		assertEquals(bankPlayer.getHand(0).cardPointTotal(), 10);
+		assertEquals(10, bankPlayer.getHand(0).cardPointTotal());
 	}
 	
 	@Test
@@ -106,17 +105,17 @@ public class TwentyOneTest {
 		testPlayer3.getHand(0).setState(Hand.State.PLAYING);
 		Player[] players = {testPlayer, testPlayer2, testPlayer3};
 		ArrayList<Player> standingPlayers = game.standingPlayers(players);
-		assertEquals(standingPlayers.size(), 1);
-		assertEquals(standingPlayers.get(0).getName(), "test2");
+		assertEquals(1, standingPlayers.size());
+		assertEquals("test2", standingPlayers.get(0).getName());
 	}
 	
 	@Test
 	public void testDetermineWinnersNoStanding() {
 		TwentyOne game = new TwentyOne();
 		Player testPlayer = new Player("Bank");
-		List<Player> winners = game.determineWinners(new ArrayList<Player>(), testPlayer);
-		assertEquals(winners.size(), 1);
-		assertEquals(((Player)winners.get(0)).getName(), "Bank");
+		List<Player> winners = game.determineWinners(new ArrayList<>(), testPlayer);
+		assertEquals(1, winners.size());
+		assertEquals("Bank", winners.get(0).getName());
 	}
 	
 	@Test
@@ -127,8 +126,8 @@ public class TwentyOneTest {
 		Player testPlayer2 = new Player("test");
 		testPlayer2.getHand(0).setState(Hand.State.STANDING);
 		List<Player> winners = game.determineWinners(Collections.singletonList(testPlayer2), testPlayer);
-		assertEquals(winners.size(), 1);
-		assertEquals(((Player)winners.get(0)).getName(), "test");
+		assertEquals(1, winners.size());
+		assertEquals("test", winners.get(0).getName());
 	}
 	
 	@Test
@@ -148,12 +147,12 @@ public class TwentyOneTest {
 		
 		testPlayer3.getHand(0).addCard(new Card(2, Card.Suit.HEARTS, Card.Type.STANDARD));
 		testPlayer3.getHand(0).setState(Hand.State.STANDING);
-		ArrayList<Player> players = new ArrayList<Player>();
+		ArrayList<Player> players = new ArrayList<>();
 		players.add(testPlayer2);
 		players.add(testPlayer3);
 		List<Player> winners = game.determineWinners(players, bankPlayer);
-		assertEquals(winners.size(), 1);
-		assertEquals(((Player)winners.get(0)).getName(), "test");
+		assertEquals(1, winners.size());
+		assertEquals("test", winners.get(0).getName());
 	}
 	
 	@Test
@@ -167,8 +166,8 @@ public class TwentyOneTest {
 		testPlayer2.getHand(0).addCard(new Card(10, Card.Suit.HEARTS, Card.Type.STANDARD));
 		testPlayer2.getHand(0).setState(Hand.State.STANDING);
 		List<Player> winners = game.determineWinners(Collections.singletonList(testPlayer2), bankPlayer);
-		assertEquals(winners.size(), 1);
-		assertEquals(((Player)winners.get(0)).getName(), "Bank");
+		assertEquals(1, winners.size());
+		assertEquals("Bank", winners.get(0).getName());
 	}
 
 }

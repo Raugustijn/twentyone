@@ -2,7 +2,6 @@ package io.github.raugustijn.twentyone;
 
 import static org.junit.Assert.*;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import io.github.raugustijn.twentyone.Card.Suit;
@@ -23,7 +22,7 @@ public class HandTest {
 		Hand testHand = new Hand();
 		testHand.addCard(new Card(10, Suit.DIAMONDS, Type.STANDARD));
 		testHand.addCard(new Card(1, Suit.DIAMONDS, Type.ACE));
-		assertEquals(testHand.cardPointTotal(), 21);
+		assertEquals(21, testHand.cardPointTotal());
 	}
 	
 	@Test
@@ -32,13 +31,13 @@ public class HandTest {
 		testHand.addCard(new Card(10, Suit.DIAMONDS, Type.STANDARD));
 		testHand.addCard(new Card(10, Suit.HEARTS, Type.STANDARD));
 		testHand.addCard(new Card(1, Suit.DIAMONDS, Type.ACE));
-		assertEquals(testHand.cardPointTotal(), 21);
+		assertEquals(21, testHand.cardPointTotal());
 	}
 	
 	@Test
 	public void testCardPointTotalEmpty() {
 		Hand testHand = new Hand();
-		assertEquals(testHand.cardPointTotal(), 0);
+		assertEquals(0, testHand.cardPointTotal());
 	}
 	
 	@Test
@@ -46,7 +45,7 @@ public class HandTest {
 		Hand testHand = new Hand();
 		testHand.addCard(new Card(10, Suit.DIAMONDS, Type.STANDARD));
 		testHand.addCard(new Card(10, Suit.HEARTS, Type.STANDARD));
-		assertEquals(testHand.cardPointTotal(), 20);
+		assertEquals(20, testHand.cardPointTotal());
 	}
 	
 	@Test
@@ -80,7 +79,7 @@ public class HandTest {
 		testHand.addCard(new Card(10, Suit.DIAMONDS, Type.STANDARD));
 		testHand.addCard(new Card(10, Suit.HEARTS, Type.STANDARD));
 		testHand.addCard(new Card(10, Suit.CLUBS, Type.STANDARD));
-		assertEquals(testHand.amountAces(), 0);
+		assertEquals(0, testHand.amountAces());
 	}
 	
 	@Test
@@ -89,7 +88,7 @@ public class HandTest {
 		testHand.addCard(new Card(10, Suit.DIAMONDS, Type.STANDARD));
 		testHand.addCard(new Card(10, Suit.HEARTS, Type.STANDARD));
 		testHand.addCard(new Card(1, Suit.CLUBS, Type.ACE));
-		assertEquals(testHand.amountAces(), 1);
+		assertEquals(1, testHand.amountAces());
 	}
 	
 	@Test(expected=IllegalStateException.class)
@@ -107,9 +106,9 @@ public class HandTest {
 		testHand.addCard(new Card(10, Suit.DIAMONDS, Type.STANDARD));
 		testHand.addCard(new Card(10, Suit.HEARTS, Type.STANDARD));
 		Hand newHand = testHand.split();
-		assertEquals(testHand.numberCards(), 1);
-		Assert.assertEquals(testHand.get(0).getSuit(), Suit.DIAMONDS);
-		assertEquals(newHand.numberCards(), 1);
-		Assert.assertEquals(newHand.get(0).getSuit(), Suit.HEARTS);
+		assertEquals(1, testHand.numberCards());
+		assertEquals(Suit.DIAMONDS, testHand.get(0).getSuit());
+		assertEquals(1, newHand.numberCards());
+		assertEquals(Suit.HEARTS, newHand.get(0).getSuit());
 	}
 }
