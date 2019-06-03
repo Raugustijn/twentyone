@@ -13,11 +13,11 @@ public class TwentyOne {
 		STAND, HIT, SPLIT
 	}
 
-	public TwentyOne() {
+	TwentyOne() {
 		ui = new TwentyOneUi();
 	}
 	
-	protected void startGame() {
+	void startGame() {
 		Deck deck = new Deck();
 		Player[] players = generatePlayers();
 		Player bank = new Player("Bank");
@@ -38,7 +38,7 @@ public class TwentyOne {
 	 * @param bank The player who is the bank.
 	 * @return List<Player> A list of players who have won.
 	 */
-	protected List<Player> determineWinners(List<Player> standingPlayers, Player bank) {
+	List<Player> determineWinners(List<Player> standingPlayers, Player bank) {
 		// if all players are busted the bank wins
 		if (standingPlayers.isEmpty()) {
 			Collections.singletonList(bank);
@@ -63,7 +63,7 @@ public class TwentyOne {
 		}
 	}
 	
-	protected ArrayList<Player> roundBank(Player[] players, Player bank, Deck deck) {
+	ArrayList<Player> roundBank(Player[] players, Player bank, Deck deck) {
 		ArrayList<Player> standingPlayers = standingPlayers(players);
 		while ((!standingPlayers.isEmpty())
 				&& (bank.getHand(0).cardPointTotal() < 17)) {
@@ -74,7 +74,7 @@ public class TwentyOne {
 		return standingPlayers;
 	}
 	
-	protected ArrayList<Player> standingPlayers(Player[] players) {
+	ArrayList<Player> standingPlayers(Player[] players) {
 		ArrayList<Player> standingPlayers = new ArrayList<>();
 		for (Player player : players) {
 			boolean standing = false;
@@ -87,7 +87,7 @@ public class TwentyOne {
 		return standingPlayers;
 	}
 
-	protected void roundPlayers(Player[] players, Player bank, Deck deck) {
+	void roundPlayers(Player[] players, Player bank, Deck deck) {
 		ui.notifyNewRound(players, bank);
 		for (Player player : players) {
 			int numberHands = player.getNumberHand();
@@ -100,7 +100,7 @@ public class TwentyOne {
 		}
 	}
 
-	protected void executePlayOption(Hand hand, Player player,
+	void executePlayOption(Hand hand, Player player,
 			PlayOption playOption, Deck deck) {
 		switch (playOption) {
 		case HIT:
@@ -126,7 +126,7 @@ public class TwentyOne {
 		}
 	}
 	
-	protected void giveAllPlayersCard(Player[] players, Player bank, Deck deck) {
+	void giveAllPlayersCard(Player[] players, Player bank, Deck deck) {
 		for (Player player : players) {
 			for (int i = 0; i < player.getNumberHand(); i++) {
 				Hand hand = player.getHand(i);
@@ -136,7 +136,7 @@ public class TwentyOne {
 		bank.getHand(0).addCard(deck.pickCard());
 	}
 
-	protected Player[] generatePlayers() {
+	Player[] generatePlayers() {
 		int amountPlayers = ui.askPlayerAmount();
 		Player[] players = new Player[amountPlayers];
 		for (int i = 0; i < amountPlayers; i++) {
@@ -146,7 +146,7 @@ public class TwentyOne {
 		return players;
 	}
 
-	protected boolean checkFinalStatePlayers(Player[] players) {
+	boolean checkFinalStatePlayers(Player[] players) {
 		for (Player player : players) {
 			for (int i = 0; i < player.getNumberHand(); i++) {
 				Hand hand = player.getHand(i);

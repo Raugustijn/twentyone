@@ -9,7 +9,7 @@ import io.github.raugustijn.twentyone.TwentyOne;
 import io.github.raugustijn.twentyone.TwentyOne.PlayOption;
 
 public class TwentyOneUi {
-	Scanner input;
+	private Scanner input;
 	
 	public TwentyOneUi() {
 		input = new Scanner(System.in);
