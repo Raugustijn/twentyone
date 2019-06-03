@@ -39,10 +39,6 @@ public class TwentyOne {
 	 * @return List<Player> A list of players who have won.
 	 */
 	List<Player> determineWinners(List<Player> standingPlayers, Player bank) {
-		// if all players are busted the bank wins
-		if (standingPlayers.isEmpty()) {
-			Collections.singletonList(bank);
-		}
 		// if the bank is busted all the players win
 		if (Hand.State.BUSTED.equals(bank.getHand(0).getState())) {
 			return standingPlayers;
@@ -57,7 +53,7 @@ public class TwentyOne {
 			}
 		}
 		if (winners.size() > 0) {
-					return winners;
+			return winners;
 		} else {
 			return Collections.singletonList(bank);
 		}
